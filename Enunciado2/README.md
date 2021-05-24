@@ -77,6 +77,37 @@ NAME                        READY   STATUS    RESTARTS   AGE
 backend-cbd6b7548-4ntlv     1/1     Running   0          4m43s
 frontend-67c58dc5cc-p6tfs   1/1     Running   0          4m43s
 
+5) Se crearon dos servicios tipo ClusterIP
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get svc
+NAME       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+backend    ClusterIP   10.102.250.114   <none>        8000/TCP   15m
+frontend   ClusterIP   10.111.112.90    <none>        3000/TCP   15m
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ curl -I http://localhost:8000
+HTTP/1.1 200 OK
+Date: Mon, 24 May 2021 19:18:06 GMT
+Server: WSGIServer/0.2 CPython/3.7.10
+Content-Type: text/html; charset=utf-8
+X-Frame-Options: SAMEORIGIN
+Vary: Cookie
+Content-Length: 4056
+Set-Cookie:  csrftoken=wCJ2yp7iFj8B0vGNZe9D1nmdvBTQmmE4SJZoigVu86fOJWve21WLlDxAbx6SMFoD; expires=Mon, 23 May 2022 19:18:06 GMT; Max-Age=31449600; Path=/; SameSite=Lax
+
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ curl -I http://localhost:3000
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Thu, 20 May 2021 11:22:51 GMT
+ETag: W/"636-17989838ef8"
+Content-Type: text/html; charset=UTF-8
+Content-Length: 1590
+Vary: Accept-Encoding
+Date: Mon, 24 May 2021 19:18:15 GMT
+Connection: keep-alive
+       
+
+
 
 
 
