@@ -33,7 +33,7 @@ spec:
         env:
         - name: SECRET_KEY
           value: craftech
-        image: backend
+        image: ggalvez/backend:latest
         imagePullPolicy: ""
         name: backend
         ports:

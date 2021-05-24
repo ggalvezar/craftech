@@ -312,8 +312,8 @@ administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$
 
  kubectl expose deployment backend --port=8000 --type=NodePort service "backend" exposed
 
- kubectl port-forward --address 0.0.0.0 pod/backend-cbd6b7548-zkmth 8000:8000 
- kubectl port-forward --address 0.0.0.0 pod/frontend-67c58dc5cc-rmtxv 3000:3000 
+ kubectl port-forward --address 0.0.0.0 pod/backend-cbd6b7548-4ntlv 8000:8000 
+ kubectl port-forward --address 0.0.0.0 pod/frontend-67c58dc5cc-p6tfs 3000:3000 
 
  kubectl expose deployment frontend --port=3000 --type=LoadBalancer service "lbf" exposed
 
