@@ -1,0 +1,322 @@
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl apply -f kubernetesdeploy/.
+error: the path "kubernetesdeploy/." does not exist
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl apply -f ./
+error: error validating "docker-compose.yml": error validating data: [apiVersion not set, kind not set]; if you choose to ignore these errors, turn validation off with --validate=false
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kompose
+
+Command 'kompose' not found, but can be installed with:
+
+sudo snap install kompose
+
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ sudo snap install kompose
+Place your finger on the fingerprint reader
+kompose 1.21.0 from Ricardo Amendoeira (ric2b) installed
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kompose
+Kompose is a tool to help users who are familiar with docker-compose move to Kubernetes.
+
+Usage:
+  kompose [command]
+
+Available Commands:
+  completion  Output shell completion code
+  convert     Convert a Docker Compose file
+  down        Delete instantiated services/deployments from kubernetes
+  help        Help about any command
+  up          Deploy your Dockerized application to a container orchestrator.
+  version     Print the version of Kompose
+
+Flags:
+      --error-on-warning    Treat any warning as an error
+  -f, --file stringArray    Specify an alternative compose file
+  -h, --help                help for kompose
+      --provider string     Specify a provider. Kubernetes or OpenShift. (default "kubernetes")
+      --suppress-warnings   Suppress all warnings
+  -v, --verbose             verbose output
+
+Use "kompose [command] --help" for more information about a command.
+subcommand is required
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kompose convert -o 
+Error: flag needs an argument: 'o' in -o
+Usage:
+  kompose convert [file] [flags]
+
+Kubernetes Flags:
+      --daemon-set               Generate a Kubernetes daemonset object (deprecated, use --controller instead)
+  -d, --deployment               Generate a Kubernetes deployment object (deprecated, use --controller instead)
+  -c, --chart                    Create a Helm chart for converted objects
+      --replication-controller   Generate a Kubernetes replication controller object (deprecated, use --controller instead)
+
+OpenShift Flags:
+      --build-branch             Specify repository branch to use for buildconfig (default is current branch name)
+      --build-repo               Specify source repository for buildconfig (default is current branch's remote url)
+      --deployment-config        Generate an OpenShift deployment config object
+      --insecure-repository      Specify to use insecure docker repository while generating Openshift image stream object
+
+Flags:
+      --build string        Set the type of build ("local"|"build-config"(OpenShift only)|"none") (default "none")
+      --controller string   Set the output controller ("deployment"|"daemonSet"|"replicationController")
+  -h, --help                help for convert
+      --indent int          Spaces length to indent generated yaml files (default 2)
+  -j, --json                Generate resource files into JSON format
+  -o, --out string          Specify a file name or directory to save objects to (if path does not exist, a file will be created)
+      --replicas int        Specify the number of replicas in the generated resource spec (default 1)
+      --stdout              Print converted objects to stdout
+      --volumes string      Volumes to be generated ("persistentVolumeClaim"|"emptyDir"|"hostPath" | "configMap") (default "persistentVolumeClaim")
+
+Global Flags:
+      --error-on-warning    Treat any warning as an error
+  -f, --file stringArray    Specify an alternative compose file
+      --provider string     Specify a provider. Kubernetes or OpenShift. (default "kubernetes")
+      --suppress-warnings   Suppress all warnings
+  -v, --verbose             verbose output
+
+flag needs an argument: 'o' in -o
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kompose convert -o kubernetesdeploy/
+WARN Volume mount on the host "/home/administrator/Documents/AWS/DevOps-PIM/Craftech/Enunciado2/backend" isn't supported - ignoring path on the host 
+WARN Volume mount on the host "/home/administrator/Documents/AWS/DevOps-PIM/Craftech/Enunciado2/frontend" isn't supported - ignoring path on the host 
+FATA transformer.CreateOutFile failed: error creating file, os.Create failed: open kubernetesdeploy/: is a directory 
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ ls
+backend  docker-compose.yml  frontend  pipeline  README.md
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ mkdir kubernetesdeploy
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kompose convert -o kubernetesdeploy/
+WARN Volume mount on the host "/home/administrator/Documents/AWS/DevOps-PIM/Craftech/Enunciado2/backend" isn't supported - ignoring path on the host 
+WARN Volume mount on the host "/home/administrator/Documents/AWS/DevOps-PIM/Craftech/Enunciado2/frontend" isn't supported - ignoring path on the host 
+INFO Kubernetes file "kubernetesdeploy/backend-service.yaml" created 
+INFO Kubernetes file "kubernetesdeploy/frontend-service.yaml" created 
+INFO Kubernetes file "kubernetesdeploy/backend-deployment.yaml" created 
+INFO Kubernetes file "kubernetesdeploy/backend-claim0-persistentvolumeclaim.yaml" created 
+INFO Kubernetes file "kubernetesdeploy/frontend-deployment.yaml" created 
+INFO Kubernetes file "kubernetesdeploy/frontend-claim0-persistentvolumeclaim.yaml" created 
+INFO Kubernetes file "kubernetesdeploy/frontend-claim1-persistentvolumeclaim.yaml" created 
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl apply -f kubernetesdeploy/.
+persistentvolumeclaim/backend-claim0 created
+deployment.apps/backend created
+service/backend created
+persistentvolumeclaim/frontend-claim0 created
+persistentvolumeclaim/frontend-claim1 created
+deployment.apps/frontend created
+service/frontend created
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kgp
+
+Command 'kgp' not found, did you mean:
+
+  command 'kgpg' from deb kgpg (4:19.12.3-0ubuntu1)
+  command 'kgb' from deb kgb (1.0b4+ds-14build1)
+  command 'gp' from deb pari-gp (2.11.2-2)
+  command 'lgp' from deb simh (3.8.1-6)
+  command 'kup' from deb kup-client (0.3.6-2)
+  command 'pgp' from deb pgpgpg (0.13-9.1build1)
+  command 'mgp' from deb mgp (1.13a+upstream20090219-11)
+
+Try: sudo apt install <deb name>
+
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl delete -f kubernetesdeploy/.
+persistentvolumeclaim "backend-claim0" deleted
+deployment.apps "backend" deleted
+service "backend" deleted
+persistentvolumeclaim "frontend-claim0" deleted
+persistentvolumeclaim "frontend-claim1" deleted
+deployment.apps "frontend" deleted
+service "frontend" deleted
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl create namespace craftech
+namespace/craftech created
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl config set-context $(kubectl config current-context) --namespace
+Error: flag needs an argument: --namespace
+See 'kubectl config set-context --help' for usage.
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl config set-context $(kubectl config current-context) --namespace craftech
+Context "minikube" modified.
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+No resources found in craftech namespace.
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl apply -f kubernetesdeploy/.
+persistentvolumeclaim/backend-claim0 created
+deployment.apps/backend created
+service/backend created
+persistentvolumeclaim/frontend-claim0 created
+persistentvolumeclaim/frontend-claim1 created
+deployment.apps/frontend created
+service/frontend created
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS             RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ImagePullBackOff   0          29s
+frontend-5dfdb6c595-vnnvk   0/1     ImagePullBackOff   0          29s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS         RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ErrImagePull   0          45s
+frontend-5dfdb6c595-vnnvk   0/1     ErrImagePull   0          45s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS         RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ErrImagePull   0          47s
+frontend-5dfdb6c595-vnnvk   0/1     ErrImagePull   0          47s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS         RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ErrImagePull   0          48s
+frontend-5dfdb6c595-vnnvk   0/1     ErrImagePull   0          48s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS             RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ErrImagePull       0          48s
+frontend-5dfdb6c595-vnnvk   0/1     ImagePullBackOff   0          48s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS             RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ErrImagePull       0          49s
+frontend-5dfdb6c595-vnnvk   0/1     ImagePullBackOff   0          49s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS             RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ImagePullBackOff   0          50s
+frontend-5dfdb6c595-vnnvk   0/1     ImagePullBackOff   0          50s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS             RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ImagePullBackOff   0          51s
+frontend-5dfdb6c595-vnnvk   0/1     ImagePullBackOff   0          51s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS             RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ImagePullBackOff   0          52s
+frontend-5dfdb6c595-vnnvk   0/1     ImagePullBackOff   0          52s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS             RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ImagePullBackOff   0          53s
+frontend-5dfdb6c595-vnnvk   0/1     ImagePullBackOff   0          53s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS             RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ImagePullBackOff   0          53s
+frontend-5dfdb6c595-vnnvk   0/1     ImagePullBackOff   0          53s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ watch kubectl get pods
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get services
+NAME       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+backend    ClusterIP   10.104.183.72    <none>        8000/TCP   89s
+frontend   ClusterIP   10.108.175.160   <none>        3000/TCP   89s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ watch kubectl get pods
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+NAME                        READY   STATUS             RESTARTS   AGE
+backend-7dd59c8798-plrmh    0/1     ImagePullBackOff   0          3m1s
+frontend-5dfdb6c595-vnnvk   0/1     ImagePullBackOff   0          3m1s
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl describe pod frontend-5dfdb6c595-vnnvk
+Name:         frontend-5dfdb6c595-vnnvk
+Namespace:    craftech
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Fri, 21 May 2021 12:55:16 -0300
+Labels:       io.kompose.service=frontend
+              pod-template-hash=5dfdb6c595
+Annotations:  kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -o kubernetesdeploy/
+              kompose.version: 1.21.0 (992df58d8)
+Status:       Pending
+IP:           172.17.0.4
+IPs:
+  IP:           172.17.0.4
+Controlled By:  ReplicaSet/frontend-5dfdb6c595
+Containers:
+  frontend:
+    Container ID:  
+    Image:         frontend
+    Image ID:      
+    Port:          3000/TCP
+    Host Port:     0/TCP
+    Args:
+      npm
+      start
+    State:          Waiting
+      Reason:       ErrImagePull
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      NODE_ENV:  development
+    Mounts:
+      /app from frontend-claim0 (rw)
+      /app/node_modules from frontend-claim1 (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gr8d7 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  frontend-claim0:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  frontend-claim0
+    ReadOnly:   false
+  frontend-claim1:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  frontend-claim1
+    ReadOnly:   false
+  default-token-gr8d7:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-gr8d7
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason            Age                    From               Message
+  ----     ------            ----                   ----               -------
+  Warning  FailedScheduling  3m36s (x2 over 3m36s)  default-scheduler  0/1 nodes are available: 1 pod has unbound immediate PersistentVolumeClaims.
+  Normal   Scheduled         3m34s                  default-scheduler  Successfully assigned craftech/frontend-5dfdb6c595-vnnvk to minikube
+  Normal   Pulling           115s (x4 over 3m33s)   kubelet            Pulling image "frontend"
+  Warning  Failed            112s (x4 over 3m29s)   kubelet            Failed to pull image "frontend": rpc error: code = Unknown desc = Error response from daemon: pull access denied for frontend, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+  Warning  Failed            112s (x4 over 3m29s)   kubelet            Error: ErrImagePull
+  Normal   BackOff           98s (x6 over 3m28s)    kubelet            Back-off pulling image "frontend"
+  Warning  Failed            86s (x7 over 3m28s)    kubelet            Error: ImagePullBackOff
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ docker image ls
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.24/images/json: dial unix /var/run/docker.sock: connect: permission denied
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ sudo docker image ls
+Place your finger on the fingerprint reader
+REPOSITORY                    TAG              IMAGE ID       CREATED         SIZE
+enunciado2_frontend           latest           c344ccd0632d   28 hours ago    592MB
+enunciado2_backend            latest           e06e71b81693   28 hours ago    714MB
+gcr.io/k8s-minikube/kicbase   v0.0.22          bcd131522525   2 weeks ago     1.09GB
+python                        3.6-alpine       118f82a946c9   2 weeks ago     40.6MB
+hello-world                   latest           d1165f221234   2 months ago    13.3kB
+node                          13.12.0-alpine   483343d6c5f5   13 months ago   114MB
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ ^C
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ sudo docker tag enunciado2_frontend ggalvez/enunciado__frontend:enunciado2_frontend
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ sudo docker tag enunciado2_backend ggalvez/backend:backend
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ docker push ggalvez/backend:backend
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.24/images/ggalvez/frontend/push?tag=frontend: dial unix /var/run/docker.sock: connect: permission denied
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ sudo docker push ggalvez/frontend:frontend
+The push refers to repository [docker.io/ggalvez/frontend]
+140af62fdd47: Preparing 
+9f414e0afd98: Preparing 
+477293a255b9: Preparing 
+a9a726812cc4: Preparing 
+40fc58c59c71: Preparing 
+407b647830a4: Waiting 
+65d358b7de11: Waiting 
+f97384e8ccbc: Waiting 
+d56e5e720148: Waiting 
+beee9f30bc1f: Waiting 
+denied: requested access to the resource is denied
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ sudo docker login -u ggalvez
+Password: 
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ docker push ggalvez/frontend:frontend
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.24/images/ggalvez/frontend/push?tag=frontend: dial unix /var/run/docker.sock: connect: permission denied
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ sudo docker push ggalvez/frontend:frontend
+The push refers to repository [docker.io/ggalvez/frontend]
+140af62fdd47: Pushed 
+9f414e0afd98: Pushed 
+477293a255b9: Pushing [==================================================>]  310.5MB
+a9a726812cc4: Pushed 
+40fc58c59c71: Pushed 
+407b647830a4: Pushed 
+65d358b7de11: Mounted from library/node 
+f97384e8ccbc: Mounted from library/node 
+d56e5e720148: Mounted from library/node 
+beee9f30bc1f: Mounted from library/node 
+^C
+administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ 
+
+ kubectl expose deployment backend --port=8000 --type=NodePort service "backend" exposed
+
+ kubectl port-forward --address 0.0.0.0 pod/backend-cbd6b7548-zkmth 8000:8000 
+ kubectl port-forward --address 0.0.0.0 pod/frontend-67c58dc5cc-rmtxv 3000:3000 
+
+ kubectl expose deployment frontend --port=3000 --type=LoadBalancer service "lbf" exposed
+
+kubectl expose rc backend --port=8000 --target-port=8000 --name=lbb --type=LoadBalancer
+
+minikube service backend --url
