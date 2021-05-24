@@ -82,6 +82,8 @@ administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get s
 NAME       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 backend    ClusterIP   10.102.250.114   <none>        8000/TCP   15m
 frontend   ClusterIP   10.111.112.90    <none>        3000/TCP   15m
+       
+       
 administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ curl -I http://localhost:8000
 HTTP/1.1 200 OK
 Date: Mon, 24 May 2021 19:18:06 GMT
