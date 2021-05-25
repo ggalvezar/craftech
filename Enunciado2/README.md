@@ -84,9 +84,37 @@ NAME       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 backend    NodePort   10.102.250.114   <none>        8000:32389/TCP   17h
 frontend   NodePort   10.111.112.90    <none>        3000:30614/TCP   17h
        
-6) Para acceder a los servicios, se crearon dos port-forward a cada pod:
+       
+Prueba de acceso a los Pods via NodePort:
+       administrator@T490:~$ curl -I http://192.168.49.2:30614
+       HTTP/1.1 200 OK
+       X-Powered-By: Express
+       Access-Control-Allow-Origin: *
+       Accept-Ranges: bytes
+       Cache-Control: public, max-age=0
+       Last-Modified: Thu, 20 May 2021 11:22:51 GMT
+       ETag: W/"636-17989838ef8"
+       Content-Type: text/html; charset=UTF-8
+       Content-Length: 1590
+       Vary: Accept-Encoding
+       Date: Tue, 25 May 2021 12:42:49 GMT
+       Connection: keep-alive
+       
+       
+       administrator@T490:~$ curl -I http://192.168.49.2:32389
+       HTTP/1.1 200 OK
+       Date: Tue, 25 May 2021 12:43:55 GMT
+       Server: WSGIServer/0.2 CPython/3.7.10
+       Content-Type: text/html; charset=utf-8
+       X-Frame-Options: SAMEORIGIN
+       Vary: Cookie
+       Content-Length: 4056
+       Set-Cookie:  csrftoken=jHW6NejJEypNImQpuVxFFLma1kvwSpJEcekh3L11p0SiPS9cLSmpOFGKfSuY5UG8; expires=Tue, 24 May 2022 12:43:55 GMT; Max-Age=31449600; Path=/; SameSite=Lax
+
+ 6) Por otro lado, para acceder a los servicios, se crearon dos port-forward a cada pod:
     kubectl port-forward --address 0.0.0.0 pod/backend-cbd6b7548-4ntlv 8000:8000 
     kubectl port-forward --address 0.0.0.0 pod/frontend-67c58dc5cc-p6tfs 3000:3000
+
        
        
 
