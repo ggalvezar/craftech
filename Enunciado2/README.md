@@ -110,6 +110,19 @@ Prueba de acceso a los Pods via NodePort:
        Vary: Cookie
        Content-Length: 4056
        Set-Cookie:  csrftoken=jHW6NejJEypNImQpuVxFFLma1kvwSpJEcekh3L11p0SiPS9cLSmpOFGKfSuY5UG8; expires=Tue, 24 May 2022 12:43:55 GMT; Max-Age=31449600; Path=/; SameSite=Lax
+       
+  6) Se probo el escalado del backend:
+     administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl scale deployment backend --replicas=2 
+     deployment.apps/backend scaled  
+    
+              administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get pods
+              NAME                        READY   STATUS    RESTARTS   AGE
+              backend-cbd6b7548-4ntlv     1/1     Running   0          17h
+              backend-cbd6b7548-x5h5k     1/1     Running   0          4m45s
+              frontend-67c58dc5cc-p6tfs   1/1     Running   2          17h
+             se valido por el logs de ambos pods, que las peticiones llegan correctamente en la distribucion de la carga de los pods escalado  
+       
+  
 
  6) Por otro lado, para acceder a los servicios, se crearon dos port-forward a cada pod:
     kubectl port-forward --address 0.0.0.0 pod/backend-cbd6b7548-4ntlv 8000:8000 
