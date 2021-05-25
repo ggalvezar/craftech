@@ -78,11 +78,11 @@ NAME                        READY   STATUS    RESTARTS   AGE
 backend-cbd6b7548-4ntlv     1/1     Running   0          4m43s
 frontend-67c58dc5cc-p6tfs   1/1     Running   0          4m43s
 
-5) Vemos los servicios:
+5) Vemos los servicios, estan definidos como NodePort:
 administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ kubectl get svc
-NAME       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
-backend    ClusterIP   10.102.250.114   <none>        8000/TCP   15m
-frontend   ClusterIP   10.111.112.90    <none>        3000/TCP   15m
+NAME       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+backend    NodePort   10.102.250.114   <none>        8000:32389/TCP   17h
+frontend   NodePort   10.111.112.90    <none>        3000:30614/TCP   17h
        
 6) Para acceder a los servicios, se crearon dos port-forward a cada pod:
     kubectl port-forward --address 0.0.0.0 pod/backend-cbd6b7548-4ntlv 8000:8000 
