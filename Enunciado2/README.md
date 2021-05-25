@@ -15,8 +15,8 @@ De acuerdo al enunciado, se planteo el escenario desde dos formas, usando:
 
 DOCKER-COMPOSE
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-1) Docker_Compose: En la carpeta FrontEnd y Backend exite un Dockerfile por cada carpeta respectivamente. En base a esos dockerfile, se armaron las imagenes de frontend (react) y backend(django). Una vez armadas se procedio a ejecutar el docker-compose para levantar las imagene.
-Una vez creada las imagenes, se armo el docker-compose.yaml (ver archivo en Enunciado2)
+1) Docker_Compose: En la carpeta FrontEnd y Backend exite un Dockerfile por cada carpeta respectivamente. En base a esos dockerfile, se armaron las imagenes de frontend (react) y backend(django). Una vez armadas se procedio a ejecutar el docker-compose para levantar los contenedores.
+Se uso la red por defecto.
 
 administrator@T490:~/Documents/AWS/DevOps-PIM/Craftech/Enunciado2$ docker-compose up -d
 Creating network "enunciado2_default" with the default driver
